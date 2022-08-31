@@ -2,10 +2,126 @@
 //
 
 #include <iostream>
+#include <string>
+#include <cstdio>
+#include <iomanip>
+using namespace std;
+
+void printInput() {
+    int userInputA, userInputB, userInputC;
+    std::cin >> userInputA >> userInputB >> userInputC;
+    int sum = userInputA + userInputB + userInputC;
+    std::cout << sum;
+}
+
+void basicDataTypes() {
+    /*
+    int i;
+    long l;
+    char c;
+    float f;
+    double d;
+    scanf("%d %ld %c %f %lf", &i, &l, &c, &f, &d);
+
+    printf("%d\n%ld\n%c\n%f\n%lf", i, l, c, f, d);
+    */
+}
+
+void conditionalStatements(int n) {
+    if (n < 9 && n < 10000000000) {
+        if (n == 1) { cout << "one"; }
+        else if( n == 2){ cout << "two"; }
+        else if (n == 3) { cout << "three"; }
+        else if (n == 4) { cout << "four"; }
+        else if (n == 5) { cout << "five"; }
+        else if (n == 6) { cout << "six"; }
+        else if (n == 7) { cout << "seven"; }
+        else if (n == 8) { cout << "eight"; }
+        else if (n == 9) { cout << "nine"; }
+    }
+    else {
+        cout << ("Greater than 9");
+    }
+}
+
+void forLoops() {
+    int a, b;
+    std::cin >> a >> b;
+
+    for (int i = a; i <= b; i++) {
+        if (i <= 9) {
+            if (i == 1) { cout << "one \n"; }
+            else if (i == 2) { cout << "two \n"; }
+            else if (i == 3) { cout << "three \n"; }
+            else if (i == 4) { cout << "four \n"; }
+            else if (i == 5) { cout << "five \n"; }
+            else if (i == 6) { cout << "six \n"; }
+            else if (i == 7) { cout << "seven \n"; }
+            else if (i == 8) { cout << "eight \n"; }
+            else if (i == 9) { cout << "nine \n"; }
+        }
+        else if (i % 2 == 0) {
+            cout << "even \n";
+        }
+        else {
+            cout << "odd \n";
+        }
+    }
+}
+
+void update(int* a, int* b) {
+    int sum = *a + *b;
+    int diff;
+
+    if (&a > &b) {
+        diff = a - b;
+    }
+    else {
+        diff = b - a;
+    }
+
+    cout << sum << "\n";
+    cout << diff << "\n";
+    *a = sum;
+    *b = diff;
+    cout << *a << "\n";
+    cout << *b << "\n";
+}
+
+void updates(int* a, int* b) {
+    int sum = *a + *b;
+    int diff;
+
+    if (*a > *b) {
+        diff = *a - *b;
+    }
+    else {
+        diff = *b - *a;
+    }
+
+    cout << "sum " << sum << "\n";
+    cout << "diff " << diff << "\n";
+    *a = sum;
+    *b = diff;
+    cout << "*a " << *a << "\n";
+    cout << "*b " << *b << "\n";
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    //printInput();
+    //basicDataTypes();
+    //conditionalStatements(44);
+    //forLoops();
+
+    int a, b;
+    int* pa = &a, * pb = &b;// because these are pointers to a and b, we can set the values of a & b later. 
+    a = 4;
+    b = 5;
+    update(pa, pb);
+    cout << "\n \n";
+    updates(pa, pb);
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
