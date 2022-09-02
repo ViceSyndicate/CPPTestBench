@@ -69,6 +69,7 @@ void forLoops() {
     }
 }
 
+// https://stackoverflow.com/questions/3350626/whats-the-meaning-of-and-when-applied-to-variable-names
 void update(int* a, int* b) {
     int sum = *a + *b;
     int diff;
@@ -107,6 +108,24 @@ void updates(int* a, int* b) {
     cout << "*b " << *b << "\n";
 }
 
+void printInArrayReverseOrder() {
+
+    int n = 4;
+    //cin >> n;
+    int arr[4];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        //cout << arr[i];
+    }
+
+    n = sizeof(arr) / sizeof(int);
+
+    for (int i = n-1; i >= 0; i--) {
+        std::cout << arr[i] << " ";
+    }
+}
+
 int main()
 {
     //printInput();
@@ -114,13 +133,14 @@ int main()
     //conditionalStatements(44);
     //forLoops();
 
-    int a, b;
-    int* pa = &a, * pb = &b;// because these are pointers to a and b, we can set the values of a & b later. 
-    a = 4;
-    b = 5;
-    update(pa, pb);
-    cout << "\n \n";
-    updates(pa, pb);
+    //int a, b;
+    //int* pa = &a, * pb = &b;// because these are pointers to a and b, we can set the values of a & b later. 
+    //a = 4;
+    //b = 5;
+    //update(pa, pb);
+    //cout << "\n \n";
+    //updates(pa, pb);
+    printInArrayReverseOrder();
     return 0;
 }
 
