@@ -5,6 +5,8 @@
 #include <string>
 #include <cstdio>
 #include <iomanip>
+#include <vector>
+#include <sstream>
 using namespace std;
 
 void printInput() {
@@ -110,20 +112,154 @@ void updates(int* a, int* b) {
 
 void printInArrayReverseOrder() {
 
-    int n = 4;
+    //int n;
     //cin >> n;
+    //int arr[n];
     int arr[4];
+    int n = sizeof(arr) / sizeof(int);
 
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
         //cout << arr[i];
     }
 
-    n = sizeof(arr) / sizeof(int);
-
     for (int i = n-1; i >= 0; i--) {
         std::cout << arr[i] << " ";
     }
+}
+
+void variableSizedArrays() {
+    /*
+    * https://www.hackerrank.com/challenges/variable-sized-arrays/problem?isFullScreen=true&h_r=next-challenge&h_v=zen
+    * Sample Input
+    2 2
+    3 1 5 4
+    5 1 2 8 9 3
+    0 1
+    1 3
+
+    //arr[1,  2,  3,  4,  5]
+    //   [1] [2] [3] [4] [3]
+    //   [5] [6]     [7]
+    //   [3]
+    */
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+
+// Array = a,
+// first line contains n & q
+// n = variable-length arrays
+// q = number of queries
+
+// query (i, j)
+    int n, queries;
+    cin >> n >> queries;
+    cout << "n = " << n;
+    cout << "\nqueries = " << queries;
+    cout << "\n";
+
+    vector<vector<int>> twoDVectorArray;
+
+    for (int i = 0; i < n; i++) {
+        int lengthOfArray;
+        cin >> lengthOfArray;
+
+        vector<int> vectorI;
+
+        for (int j = 0; j < lengthOfArray; j++) {
+            int val;
+            cin >> val;
+            vectorI.push_back(val);
+        }
+        twoDVectorArray.push_back(vectorI);
+    }
+
+    for (int y = 0; y < 3; y++) {
+        cout << twoDVectorArray[0][y] << " ";
+    }
+
+    cout << "\n";
+
+    for (int y = 0; y < 5; y++) {
+        cout << twoDVectorArray[1][y] << " ";
+    }
+
+    for (int i = 0; i < queries; i++) {
+        int posOne, posTwo;
+        cin >> posOne >> posTwo;
+        cout << twoDVectorArray[posOne][posTwo];
+    }
+}
+
+vector<int> parseInts(string str) {
+    // Complete this function
+    stringstream ss(str);
+    vector<int> integers;
+
+    char ch;
+    int tempNr;
+
+    while (ss >> tempNr) {
+        integers.push_back(tempNr);// Assign number to integers vector
+        ss >> ch; // Assign the following "," to a throwaway character. Then get the next number.
+    }
+    return integers;
+}
+
+//Implement the class Box  
+//l,b,h are integers representing the dimensions of the box
+
+// The class should have the following functions : 
+
+// Constructors: 
+// Box();
+// Box(int,int,int);
+// Box(Box);
+
+
+// int getLength(); // Return box's length
+// int getBreadth (); // Return box's breadth
+// int getHeight ();  //Return box's height
+// long long CalculateVolume(); // Return the volume of the box
+
+//Overload operator < as specified
+//bool operator<(Box& b)
+
+//Overload operator << as specified
+//ostream& operator<<(ostream& out, Box& B)
+
+class Box {
+private: int length, breadth, height = 0;
+public: Box(int l, int b, int h) {
+    length = l;
+    breadth = b;
+    height = h;
+}
+      int getLength() {
+          return length;
+      };
+      int getBreadth() {
+          return breadth;
+      };
+      int getHeight() {
+          return height;
+      };
+      long CalculateVolume() {
+          //long volume = length * breadth * height;
+          return length * breadth * height;
+      }
+
+      //friend bool operator < (Box b1, Box b2)
+
+};
+
+void gets_n(std::string& str)
+{
+    // Dummy code
+    char st[100];
+    cout << str;
+    std::cin.getline(st, 100);
+    str = std::string(st);
+    // Code for new gets
 }
 
 int main()
@@ -140,9 +276,26 @@ int main()
     //update(pa, pb);
     //cout << "\n \n";
     //updates(pa, pb);
-    printInArrayReverseOrder();
+    //printInArrayReverseOrder();
+    //variableSizedArrays();
+    //vector<int> integers = parseInts("23,4,56");
+    //for (int i = 0; i < integers.size(); i++) {
+        //cout << integers[i] << "\n";
+    //}
+
+    //Box b1(1, 2, 3);
+    //Box b2(4, 5, 6);
+
+    //cout << &b1;
+
+    string bazinga = "Bazinga";
+    gets_n(bazinga);
+
+    //std::cout << b1;
     return 0;
 }
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
